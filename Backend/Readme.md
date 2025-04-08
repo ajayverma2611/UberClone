@@ -89,3 +89,65 @@ Requires a valid authentication token provided as:
   "message": "Logout successfully"
 }
 ```
+
+
+## /captains/register Endpoint
+
+### Description
+Registers a new captain by creating a captain account with the provided information including vehicle details.
+
+### HTTP Method
+POST
+
+### Request Body
+The request body should be in JSON format and include the following fields:
+
+**fullName (object):**
+- **firstName (string, required):** Captain's first name (minimum 3 characters).
+- **lastName (string, optional):** Captain's last name.
+- **email (string, required):** Captain's email address (must be a valid email).
+- **password (string, required):** Captain's password (minimum 6 characters).
+- **vehicle (object, required):**
+  - **color (string, required):** Vehicle color (minimum 3 characters).
+  - **plate (string, required):** Vehicle license plate number (minimum 3 characters).
+  - **capacity (number, required):** Vehicle passenger capacity.
+  - **vehicleType (string, required):** Vehicle type (must be one of: 'car', 'motorcycle', 'bus').
+
+### Example Request
+```json
+{
+    "fullName": {
+        "firstName": "John",
+        "lastName": "Doe"
+    },
+    "email": "johndoe@example.com",
+    "password": "password123",
+    "vehicle": {
+        "color": "red",
+        "plate": "ABC 123",
+        "capacity": 4,
+        "vehicleType": "car"
+    }
+}
+```
+
+### Example Response
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "captain": {
+        "_id": "60d21b4667d0d8992e610c85",
+        "fullName": {
+            "firstName": "John",
+            "lastName": "Doe"
+        },
+        "email": "johndoe@example.com",
+        "vehicle": {
+            "color": "red",
+            "plate": "ABC 123",
+            "capacity": 4,
+            "vehicleType": "car"
+        }
+    }
+}
+```

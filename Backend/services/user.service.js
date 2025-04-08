@@ -1,6 +1,6 @@
 const userModel = require('../models/user.model');
 
-//---------------------- This function is to create user ------------------------------------
+//---------------------- This function is to create user -----------------------------
 module.exports.createUser = async ({
     firstName, lastName, email, password
 }) => {
